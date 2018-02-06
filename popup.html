@@ -8,7 +8,7 @@
     <style>
         body {
             min-width: 370px;
-            min-height: 90px;
+            min-height: 130px;
             margin: 0;
             padding: 0;
             display: flex;
@@ -23,8 +23,34 @@
         }
 
         .main-content {
-            height: calc(100vh - 30px);
+            height: 100px;
             align-self: flex-start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-content > .input-translate {
+            height: 30px;
+            width: 100%;
+            font-size: 14px;
+            text-align: center;
+            /* border-top: 1px solid grey; */
+            /* border-bottom: 1px solid grey; */
+            outline: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .main-content > .button-translate {
+            width: 100px;
+            height: 24px;
+            margin-top: 10px;
+        }
+
+        .translated-text {
+            min-height: 10px;
+            padding: 15px 20px;
+            font-size: 14px;
         }
 
         .footer {
@@ -33,15 +59,26 @@
             justify-content: center;
         }
 
+        .hide {
+            visibility: hidden;
+            height: 0;
+            padding: 0;
+        }
+
+        
+
     </style>
 </head>
 <body>
     <header class="header">
-        Hello Translate me
+        Alfa version 'RememberWords'(testing)
     </header>
     <main>
         <section class="main-content">
-            My name Jmishenko Valerii Albertovich
+            <input class="input-translate" type="text" id="translate-it" placeholder="Translate me">
+            <button class="button-translate" id='send-text'>Translate</button>
+        </section>
+        <section class="translated-text hide" id='output-text'>
         </section>
     </main>
     <footer class="footer">
