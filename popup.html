@@ -4,22 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Test</title>
+    <title>Remember Words</title>
     <style>
         body {
             min-width: 370px;
             min-height: 130px;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            color: rgba(0,0,0,0.7);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
 
         .header {
-            height: 15px;
+            height: 30px;
             display: flex;
             justify-content: center;
+            align-items: center;
+            font-size: 15px;
         }
 
         .main-content {
@@ -32,17 +33,17 @@
         }
 
         .main-content > .input-translate {
-            height: 30px;
             width: 100%;
             font-size: 14px;
-            text-align: center;
             /* border-top: 1px solid grey; */
             /* border-bottom: 1px solid grey; */
-            outline: 1px solid rgba(0,0,0,0.1);
+            /* outline: 1px solid rgba(0,0,0,0.1); */
+            border: 1px solid rgba(0,0,0,0.1);
+            outline: 0px;
         }
 
         .main-content > .button-translate {
-            width: 100px;
+            width: 200px;
             height: 24px;
             margin-top: 10px;
         }
@@ -71,18 +72,20 @@
 </head>
 <body>
     <header class="header">
-        Alfa version 'RememberWords'(testing)
+        Remember Words
     </header>
     <main>
         <section class="main-content">
-            <input class="input-translate" type="text" id="translate-it" placeholder="Translate me">
+            <textarea class="input-translate" rows='5' id="translate-it" placeholder="Translate me"></textarea>
             <button class="button-translate" id='send-text'>Translate</button>
         </section>
-        <section class="translated-text hide" id='output-text'>
+        <section class="translated-text hide" id='text-block'>
+            <div id='output-text'></div>
+            <button id='add-word'>Add the word</button>
         </section>
     </main>
     <footer class="footer">
-        Hello I'm footer
+        Alfa version
     </footer>
     <script src="app.js"></script>
 </body>
