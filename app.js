@@ -19,7 +19,7 @@
     });
 
     addWord.addEventListener('click', () => {
-        fetch(baseUrl + '/addWrod', {
+        fetch(baseUrl + '/addWord', {
             method: "POST",
             header,
             body: JSON.stringify({word: curr.word, data: curr.data})
