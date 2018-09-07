@@ -1,92 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Remember Words</title>
+    <link rel="stylesheet" href="material-icons/material-icons.css">
     <style>
         body {
             min-width: 370px;
             min-height: 130px;
             margin: 0;
             padding: 0;
-            color: rgba(0,0,0,0.7);
+            color: rgba(0, 0, 0, 0.7);
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
 
-        .header {
-            height: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 15px;
-        }
-
         .main-content {
-            height: 100px;
-            align-self: flex-start;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 10px;
         }
 
-        .main-content > .input-translate {
-            width: 100%;
-            font-size: 14px;
-            /* border-top: 1px solid grey; */
-            /* border-bottom: 1px solid grey; */
-            /* outline: 1px solid rgba(0,0,0,0.1); */
-            border: 1px solid rgba(0,0,0,0.1);
-            outline: 0px;
-        }
-
-        .main-content > .button-translate {
-            width: 200px;
-            height: 24px;
-            margin-top: 10px;
-        }
-
-        .translated-text {
-            min-height: 10px;
-            padding: 15px 20px;
-            font-size: 14px;
-        }
-
-        .footer {
-            height: 15px;
+        .change_language,
+        .input-translate {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
         }
 
-        .hide {
-            visibility: hidden;
-            height: 0;
-            padding: 0;
+        #translate-it,
+        #output-text,
+        .description div {
+            margin-top: 20px;
+            width: 45%;
+            border-radius: 5px;
         }
 
-        
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
 
+        #add-word,
+        #download,
+        #send-text,
+        #exchange {
+            border-radius: 10px;
+            border: 0px;
+            background: #7FDBFF;
+            color: white;
+            box-shadow: 2px 0 3px rgba(0, 0, 0, 0.1);
+        }
+
+        #download:hover,
+        #add-word:hover,
+        #send-text:hover,
+        #exchange:hover {
+            background: #39CCCC;
+        }
+
+        .change_language select {
+            border-radius: 5px;
+        }
+
+        #output-text {
+            background: rgb(128, 128, 128, 0.2);
+        }
+
+        #send-text,
+        textarea::placeholder {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 1em;
+        }
+
+        .description {
+            display: flex;
+            flex-direction: row-reverse;
+        }
     </style>
 </head>
+
 <body>
-    <header class="header">
-        Remember Words
-    </header>
     <main>
         <section class="main-content">
-            <textarea class="input-translate" rows='5' id="translate-it" placeholder="Translate me"></textarea>
-            <button class="button-translate" id='send-text'>Translate</button>
+            <div class="change_language">
+                <select>
+                    <option>english</option>
+                    <option>ukrainian</option>
+                    <option>russian</option>
+                </select>
+                <button id='exchange' class="material-icons">compare_arrows</button>
+                <select>
+                    <option>ukrainian</option>
+                    <option>english</option>
+                    <option>russian</option>
+                </select>
+            </div>
+            <div class="input-translate">
+                <textarea rows='4' id="translate-it" placeholder="Translate me"></textarea>
+                <div id='output-text'></div>
+            </div>
+            <div class="description">
+                <div></div>
+            </div>
         </section>
-        <section class="translated-text hide" id='text-block'>
-            <div id='output-text'></div>
-            <button id='add-word'>Add the word</button>
+        <section class="buttons">
+            <button id='send-text'>Translate</button>
+            <div>
+                <button id='add-word' class="material-icons">add</button>
+                <button id='download' class="material-icons">arrow_downward</button>
+            </div>
         </section>
     </main>
-    <footer class="footer">
-        Alfa version
-    </footer>
     <script src="app.js"></script>
 </body>
+
 </html>
