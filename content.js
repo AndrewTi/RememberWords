@@ -13,11 +13,10 @@
     });
 
     document.body.addEventListener('mouseup', (event) => {
+        const elem = id('rm-tooltip');
 
         if(window.getSelection().toString().length < 1)
-            return false;
-
-        const elem = id('rm-tooltip');
+            return elem.style.display = 'none';
 
         if(elem)
             elem.parentNode.removeChild(elem);
@@ -25,7 +24,7 @@
         document.body.insertAdjacentHTML('afterbegin', `
             <div 
                 id='rm-tooltip' 
-                style='position: absolute; top: ${event.pageY}px; left: ${event.pageX}px; width: 250px; height: 120px; background: black; z-index: 999999999'
+                style='position: absolute; top: ${event.pageY}px; left: ${event.pageX - 125}px; width: 250px; height: 120px; background: red; z-index: 999999999'
                 >
                     Hello World
             </div>
