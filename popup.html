@@ -11,12 +11,40 @@
         body {
             min-width: 370px;
             min-height: 130px;
-            margin: 0;
+            margin: 0 auto;
             padding: 0;
             color: rgba(0, 0, 0, 0.7);
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
-        .main-content {
+        .enter-form {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 20px;
+            margin: 60px;
+        }
+        .login, 
+        .registration {
+            display: flex;
+            justify-content: space-around;
+            width: 130px;
+            padding: 10px;
+            margin: 5px;
+            color: whitesmoke;
+            background-color: rgb(132, 99, 192);
+        }
+        .login-form,
+        .registration-form {
+            margin: 20px;
+            text-align: center;
+        }
+        .registerbtn,
+        .homebtn,
+        #send-text {
+            width: 120px;
+            padding: 10px;
+        }
+        .content {
             display: flex;
             flex-direction: column;
             padding: 10px;
@@ -28,31 +56,42 @@
         }
         #translate-it,
         #output-text,
-        .description div {
-            margin-top: 20px;
+        .description div,
+        label, 
+        input {
+            margin-top: 30px;
             width: 45%;
             border-radius: 5px;
         }
-        .buttons {
+        .buttons
+         {
             display: flex;
             justify-content: space-between;
-            padding: 10px;
+            padding: 20px;
         }
         #add-word,
         #download,
         #send-text,
-        #exchange {
+        #exchange,
+        .login,
+        .registration,
+        .registerbtn,
+        .homebtn {
             border-radius: 10px;
             border: 0px;
-            background: #7FDBFF;
+            background: rgb(132, 99, 192);
             color: white;
             box-shadow: 2px 0 3px rgba(0, 0, 0, 0.1);
         }
         #download:hover,
         #add-word:hover,
         #send-text:hover,
-        #exchange:hover {
-            background: #39CCCC;
+        #exchange:hover,
+        .login:hover,
+        .registration:hover,
+        .registerbtn:hover,
+        .homebtn:hover {
+            background: rgb(87, 112, 250);
         }
         .change_language select {
             border-radius: 5px;
@@ -61,20 +100,79 @@
             background: rgb(128, 128, 128, 0.2);
         }
         #send-text,
-        textarea::placeholder {
+        textarea::placeholder, 
+        .login, 
+        .registration {
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            font-size: 1em;
+            font-size: 1.2em;
         }
         .description {
             display: flex;
             flex-direction: row-reverse;
+        }
+
+        .hide {
+            display: none;
         }
     </style>
 </head>
 
 <body>
     <main>
-        <section class="main-content">
+        <section class="enter-form">
+            <button class="login">Login</button>
+            <button class="registration">Register</button>
+        </section>
+        <section class="login-form hide">
+            <form action="">
+                <div class="container">
+                    <h1>Login</h1>
+                    <p>Login to your account.</p>
+                    <hr>
+
+                    <label for="email"><b>Email</b></label>
+                    <input  type="text" placeholder="Enter Email" name="email" required>
+                    <br>
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <hr>
+                    
+                    <button class="homebtn">Home</button>
+                    <button type="submit" class="registerbtn">Login</button>
+                </div>
+                
+                <div>
+                    <p>Don't have an account? <a class="signup" href="#">Register</a>.</p>
+                </div>
+            </form>
+        </section>
+        <section class="registration-form hide">
+            <form action="">
+                <div class="container">
+                    <h1>Register</h1>
+                    <p>Please fill in this form to create an account.</p>
+                    <hr>
+
+                    <label for="email"><b>Email</b></label>
+                    <input type="text" placeholder="Enter Email" name="email" required>
+                    <br>
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+
+                    <hr>
+                    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+                    <button class="homebtn">Home</button>
+                    <button type="submit" class="registerbtn">Register</button>
+                </div>
+                
+                <div>
+                    <p>Already have an account? <a class="signin" href="#">Sign in</a>.</p>
+                </div>
+            </form>
+        </section>
+        <section class="main">
+            <section class="content">
             <div class="change_language">
                 <select>
                     <option>english</option>
@@ -102,6 +200,7 @@
                 <button id='add-word' class="material-icons">add</button>
                 <button id='download' class="material-icons">arrow_downward</button>
             </div>
+        </section>
         </section>
     </main>
     <script src="app.js"></script>
