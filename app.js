@@ -1,6 +1,8 @@
 // singleton pattern
 (() => {
 
+    const { translate, createUser, login } = service;
+
     // facade pattern
     const id = id => document.getElementById(id);
 
@@ -18,7 +20,7 @@
     const download      = id('download');
 
     const enterForm         = document.querySelector('.enter-form');
-    const login             = document.querySelector(".login");
+    const loginElem         = document.querySelector(".login");
     const registration      = document.querySelector('.registration');
     const registrationForm  = document.querySelector('.registration-form');
     const loginForm         = document.querySelector('.login-form');
@@ -84,13 +86,13 @@
         })
     })
 
-    login.addEventListener('click', () => {
+    loginElem.addEventListener('click', () => {
         // show
         loginForm.classList.remove('hide');
 
         // hide
         enterForm.classList.add('hide');
-        login.classList.add('hide');
+        loginElem.classList.add('hide');
         registration.classList.add('hide');
         mainContent.classList.add('hide');
         registrationForm.classList.add('hide');
@@ -102,7 +104,7 @@
 
         // hide
         enterForm.classList.add('hide');
-        login.classList.add('hide');
+        loginElem.classList.add('hide');
         registration.classList.add('hide');
         mainContent.classList.add('hide')
         loginForm.classList.add('hide');
@@ -112,7 +114,7 @@
         //show
         mainContent.classList.remove('hide');
         enterForm.classList.remove('hide');
-        login.classList.remove('hide');
+        loginElem.classList.remove('hide');
         registration.classList.remove('hide');
         //hide
         loginForm.classList.add('hide');
@@ -124,7 +126,7 @@
         registrationForm.classList.remove('hide');
         // hide
         enterForm.classList.add('hide');
-        login.classList.add('hide');
+        loginElem.classList.add('hide');
         registration.classList.add('hide');
         mainContent.classList.add('hide');
         loginForm.classList.add('hide');
@@ -136,7 +138,7 @@
         // hide
         registrationForm.classList.add('hide');
         enterForm.classList.add('hide');
-        login.classList.add('hide');
+        loginElem.classList.add('hide');
         registration.classList.add('hide');
         mainContent.classList.add('hide');
     })
