@@ -49,14 +49,13 @@ const service = (() => {
 
     /** Method allow us translate a text and have feature like autodetect source text
      * 
-     * @param {Object} data 
-     * @param {String} [data.source] - translate text from
-     * @param {String} data.target - translate text to
-     * @param {String} data.text 
+     * @param {String} target - translate text to
+     * @param {String} text 
+     * @param {String} [source] - translate text from
      * 
      * @returns {Promise} 
      */
-    const _translate = (data) => fetch(words + '/translate', req(data, 'post')).then(resp => resp.json());
+    const _translate = (target, text, source = 'auto') => fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=${source}&tl=${target}&hl=${target}&dt=bd&dj=1&source=input&dt=t&q=` + encodeURI(text)).then(resp => resp.json());
 
     return {
         createUser: _createUser,

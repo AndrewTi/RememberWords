@@ -31,10 +31,9 @@
         if(userText.length < 1)
             return false;
 
-        translate({ text: userText, target: 'uk'}).then(resp => {
-            console.log(elem, elem.classList, userText);
+        translate('uk', userText).then(resp => {
             elem.classList.remove('rw-hide');
-            const text = 'test';
+            const text = resp.sentences[0].trans;
 
             elem.textContent = text;
         })
