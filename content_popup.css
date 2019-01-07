@@ -1,0 +1,10 @@
+.rw-tooltip {
+    position: absolute;
+    width: 250px;
+    height: 150px;
+    background: red;
+}
+
+.rw-hide {
+    display: none;
+}

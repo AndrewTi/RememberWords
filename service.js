@@ -4,8 +4,19 @@ const service = (() => {
     const users = baseURL + '/users';
     const words = baseURL + '/words';
 
+    const req = (data, method) => {
+        return {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: method,
+            body: JSON.stringify(data)
+        }
+    }
+
     //////////    USERS    ////////////
-    
+
     /** Method with we can create a new user in the app
      * 
      * @param {Object} data 
@@ -17,7 +28,7 @@ const service = (() => {
      * 
      * @returns {Promise}
      */
-    const _createUser = (data) => fetch(users, data).then(resp => resp.json());
+    const _createUser = (data) => fetch(users, ).then(resp => resp.json());
 
     /** Method with we can login into the app 
      * 
@@ -45,7 +56,7 @@ const service = (() => {
      * 
      * @returns {Promise} 
      */
-    const _translate = (data) => fetch(words + '/translate', data).then(resp => resp.json());
+    const _translate = (data) => fetch(words + '/translate', req(data, 'post')).then(resp => resp.json());
 
     return {
         createUser: _createUser,

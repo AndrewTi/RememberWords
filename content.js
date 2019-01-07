@@ -1,5 +1,10 @@
 (() => {
+    const { translate } = service;
     const id = id => document.getElementById(id);
+
+    document.body.insertAdjacentHTML('afterbegin', `<div id='rw-tooltip' class="rw-tooltip rw-hide"></div>`);
+
+    const elem = id('rw-tooltip');
 
     const curr = {
         word: null,
@@ -7,29 +12,33 @@
     };
     const baseUrl = 'http://localhost:5000/rm-words/us-central1';
 
-    let header = new Headers({
-        'Access-Control-Allow-Origin':'*',
-        'Content-Type': 'application/json'
-    });
+    document.addEventListener('mousedown', () => {
+        getSelection().empty();
+
+        if(!elem.classList.contains('rw-hide'))
+            elem.classList.add('rw-hide');
+    })
 
     document.body.addEventListener('mouseup', (event) => {
-        const elem = id('rm-tooltip');
+        if(!elem.classList.contains('rw-hide'))
+            elem.classList.add('rw-hide');
 
-        if(window.getSelection().toString().length < 1)
-            return elem.style.display = 'none';
+        elem.style.top = `${event.pageY + 10}px`;
+        elem.style.left = `${event.pageX - 125}px`;
 
-        if(elem)
-            elem.parentNode.removeChild(elem);
+        const userText = window.getSelection().toString();
 
-        document.body.insertAdjacentHTML('afterbegin', `
-            <div 
-                id='rm-tooltip' 
-                style='position: absolute; top: ${event.pageY}px; left: ${event.pageX - 125}px; width: 250px; height: 120px; background: red; z-index: 999999999'
-                >
-                    Hello World
-            </div>
-        `);
-        console.log(window.getSelection().toString(), event);
+        if(userText.length < 1)
+            return false;
+
+        translate({ text: userText, target: 'uk'}).then(resp => {
+            console.log(elem, elem.classList, userText);
+            elem.classList.remove('rw-hide');
+            const text = 'test';
+
+            elem.textContent = text;
+        })
+        console.log(window.getSelection(), event);
     });
 
 })();
