@@ -1,6 +1,14 @@
 // singleton pattern
 (() => {
 
+    // chrome.storage.sync.set({'key': 'value'}, function() {
+    //     console.log('Value is set to ' + 'value');
+    // });
+
+    const router = new Route();
+    router.register('login', (router) => console.log('test', router));
+    router.switchTo('login');
+
     const { translate, createUser, login } = service;
 
     // facade pattern
@@ -116,6 +124,7 @@
         enterForm.classList.remove('hide');
         loginElem.classList.remove('hide');
         registration.classList.remove('hide');
+
         //hide
         loginForm.classList.add('hide');
         registrationForm.classList.add('hide');
@@ -124,6 +133,7 @@
     signup.addEventListener('click', ()=> {
         // show
         registrationForm.classList.remove('hide');
+
         // hide
         enterForm.classList.add('hide');
         loginElem.classList.add('hide');
@@ -135,6 +145,7 @@
     signin.addEventListener('click', ()=> {
         // show
         loginForm.classList.remove('hide');
+
         // hide
         registrationForm.classList.add('hide');
         enterForm.classList.add('hide');

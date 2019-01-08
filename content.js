@@ -1,16 +1,18 @@
 (() => {
+    // libs/modules
     const { translate } = service;
+
+    // data of popup
+    let state = {
+        trans: null
+    };
+
+    // funcs
     const id = id => document.getElementById(id);
 
-    document.body.insertAdjacentHTML('afterbegin', `<div id='rw-tooltip' class="rw-tooltip rw-hide"></div>`);
+    document.body.insertAdjacentHTML('afterbegin', `<div id='rw-tooltip' data-info='remember words popup' class="rw-tooltip rw-hide"></div>`);
 
     const elem = id('rw-tooltip');
-
-    const curr = {
-        word: null,
-        data: null
-    };
-    const baseUrl = 'http://localhost:5000/rm-words/us-central1';
 
     document.addEventListener('mousedown', () => {
         getSelection().empty();
@@ -20,6 +22,11 @@
     })
 
     document.body.addEventListener('mouseup', (event) => {
+        chrome.storage.sync.get(['key'], function(result) {
+            console.log('Value currently is content ' + result.key);
+          });
+
+
         if(!elem.classList.contains('rw-hide'))
             elem.classList.add('rw-hide');
 
@@ -33,11 +40,13 @@
 
         translate('uk', userText).then(resp => {
             elem.classList.remove('rw-hide');
+
+            state.trans = resp;
+
             const text = resp.sentences[0].trans;
 
             elem.textContent = text;
         })
-        console.log(window.getSelection(), event);
     });
 
 })();
