@@ -4,7 +4,7 @@
 
 import router from './routes/';
 
-router.switchTo('login');
+router.switchTo('home');
 
 // const router = new Route();
 // router.register('login', (router) => console.log('test', router));

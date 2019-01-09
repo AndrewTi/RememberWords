@@ -2,6 +2,8 @@
 class Route {
     constructor() {
         this.routes = []
+
+        this.switchTo = this.switchTo.bind(this);
     }
 
 

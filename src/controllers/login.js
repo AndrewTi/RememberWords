@@ -1,3 +1,3 @@
-export default data => {
-    console.log('test login');
+export default (switcher, data) => {
+    console.log('test login', data);
 }
