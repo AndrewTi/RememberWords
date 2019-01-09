@@ -19,7 +19,7 @@ class Route {
         
         this.routes.push({
             path: name,
-            render: data => controller(data)
+            render: data => controller(this.switchTo, data)
         });
 
         return this;
