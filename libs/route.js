@@ -1,3 +1,4 @@
+// Chain of responsibility pattern
 class Route {
     constructor() {
         this.routes = []
@@ -44,3 +45,5 @@ class Route {
         return this;
     }
 }
+
+export default Route;
